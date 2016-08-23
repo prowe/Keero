@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "http-server"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/prowe/Keero/issues"
   },
-  "homepage": "https://github.com/prowe/Keero#readme"
+  "homepage": "https://github.com/prowe/Keero#readme",
+  "dependencies": {
+    "http-server": "^0.9.0"
+  }
 }
