@@ -85,9 +85,9 @@
             <dt>thieves' tools</dt>
             <dt>Rapier</dt>
             <dd>
-                <div>Attack: <span data-eval-for-content="getAbilityModifier('dex') + getStat('attack')"></span></div>
-                <div>Base damage: <span data-eval-for-content="`1d8 + ${getAbilityModifier('dex')}`"></span></div>
-                <div>Sneak attack damage: <span data-eval-for-content="`1d8 + ${getAbilityModifier('dex')} + 1d6`"></span></div>
+                <div>Attack: <a href="#" class="roll-expression" data-eval-for-content="`1d20 + ${getAbilityModifier('dex')} + ${getStat('attack')}`"></a></div>
+                <div>Base damage: <a href="#" class="roll-expression" data-eval-for-content="`1d8 + ${getAbilityModifier('dex')}`"></a></div>
+                <div>Sneak attack damage: <a href="#" class="roll-expression"  data-eval-for-content="`1d8 + ${getAbilityModifier('dex')} + 1d6`"></a></div>
             </dd>
             <dt>shortbow + 20 arrows</dt>
             <dt>explorer's pack</dt>

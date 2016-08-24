@@ -16,22 +16,36 @@ function getAbilityModifier(statName) {
 }
 
 function populateModifierElements() {
-    document.querySelectorAll('[data-populate-modifier]')
-        .forEach(e => {
+    [].slice.call(document.querySelectorAll('[data-populate-modifier]'))
+        .forEach(function(e) {
             var statName = e.attributes.getNamedItem('data-populate-modifier').value;
             e.textContent = getAbilityModifier(statName);
         });
 }
 
 function populateEvalForContent() {
-    document.querySelectorAll('[data-eval-for-content]')
-        .forEach(e => {
+    [].slice.call(document.querySelectorAll('[data-eval-for-content]'))
+        .forEach(function(e) {
             var exp = e.attributes.getNamedItem('data-eval-for-content').value;
             e.textContent = eval(exp);
+        });
+}
+
+function registerRollExpressionHandlers() {
+    [].slice.call(document.querySelectorAll('.roll-expression'))
+        .forEach(function(e) {
+            var de = new DiceExpression(e.textContent);
+            e.onclick = function (e) {
+                e.preventDefault();
+                var roll = de.roll();
+                alert('result: ' + roll.roll + " = " + roll.diceRaw);
+                return false;
+            };
         });
 }
 
 document.onreadystatechange = function(e) {
     populateModifierElements();
     populateEvalForContent();
+    registerRollExpressionHandlers();
 }
