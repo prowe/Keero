@@ -34,13 +34,20 @@ function populateEvalForContent() {
 function registerRollExpressionHandlers() {
     [].slice.call(document.querySelectorAll('.roll-expression'))
         .forEach(function(e) {
-            var de = new DiceExpression(e.textContent);
-            e.onclick = function (e) {
-                e.preventDefault();
-                var roll = de.roll();
-                alert('result: ' + roll.roll + " = " + roll.diceRaw);
-                return false;
-            };
+            var exp = e.textContent;
+            exp = exp.replace(/\+\s*0/g, ''); //fix adding 0
+            //try {
+                var de = new DiceExpression(exp);
+                e.onclick = function (e) {
+                    e.preventDefault();
+                    var roll = de.roll();
+                    alert('result: ' + roll.roll + " = " + roll.diceRaw);
+                    return false;
+                };
+           // } catch (err) {
+           //     err.message = `unable to parse expression ${exp}: ${err.message}`;
+           //     throw err;
+           // }
         });
 }
 

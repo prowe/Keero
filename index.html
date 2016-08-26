@@ -9,117 +9,150 @@
 </head>
 
 <body>
-    <h1>Keero</h1>
+    <header>
+        <h1>Keero</h1>
+    </header>
 
-    <div>Level 1 Rogue</div>
-    <div>Initiative: <span data-populate-modifier="dex"></span></div>
-    <div>Total HP: 10</div>
-    <div>Hit Dice: 1d8</div>
-    <div>Armor Class: 14</div>
-    <div>Speed: 30</div>
-    <div>Attack Proficiency: <span data-base-stat="attack">2</span></div>
+    <main>
+        <div>Level 1 Rogue</div>
+        <div>Initiative: <span data-populate-modifier="dex"></span></div>
+        <div>Total HP: <span data-eval-for-content="8 + getAbilityModifier('con') + (3 * (5 + getAbilityModifier('con')))"></span></div>
+        <div>Hit Dice: 1d8</div>
+        <div>Armor Class: 14</div>
+        <div>Speed: 30</div>
+        <div>Attack Proficiency: <span data-base-stat="attack">2</span></div>
 
-    <section>
-        <h2>Stats</h2>
-        <ul>
-            <li>Str <span data-base-stat="str">9</span></li>
-            <li>Dex <span data-base-stat="dex">16</span></li>
-            <li>Con <span data-base-stat="con">14</span></li>
-            <li>Wis <span data-base-stat="wis">13</span></li>
-            <li>Int <span data-base-stat="int">15</span></li>
-            <li>Cha <span data-base-stat="cha">11</span></li>
-        </ul>
-    </section>
+        <section>
+            <h2>Stats</h2>
+            <ul>
+                <li>Str <span data-base-stat="str">9</span></li>
+                <li>Dex <span data-base-stat="dex">16</span></li>
+                <li>Con <span data-base-stat="con">14</span></li>
+                <li>Wis <span data-base-stat="wis">13</span></li>
+                <li>Int <span data-base-stat="int">15</span></li>
+                <li>Cha <span data-base-stat="cha">11</span></li>
+            </ul>
+        </section>
 
-    <section>
-        <h2>Skills</h2>
-        <h3>Strength (<span data-populate-modifier="str"></span>)</h3>
-        <ul>
-            <li>Athletics <span data-populate-modifier="str"></span></li>
-        </ul>
-        <h3>Dexterity (<span data-populate-modifier="dex"></span>)</h3>
-        <ul>
-            <li>Acrobatics <span data-populate-modifier="dex"></span></li>
-            <li>Slight of Hand <span data-populate-modifier="dex"></span></li>
-            <li>Stealth <span data-populate-modifier="dex"></span></li>
-        </ul>
-        <h3>Wisdom (<span data-populate-modifier="wis"></span>)</h3>
-        <ul>
-            <li>Animal Handling <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + 1d20</a></li>
-            <li>Insight <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + 4 + 1d20</a></li>
-            <li>Medicine <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + 1d20</a></li>
-            <li>Perception <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + 2 + 1d20</a></li>
-            <li>Survival <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + 1d20</a></li>
-        </ul>
-        <h3>Intelligence (<span data-populate-modifier="int"></span>)</h3>
-        <ul>
-            <li>Arcana <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + 1d20</a></li>
-            <li>History <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + 2 + d20</a></li>
-            <li>Investigation <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + 2 + d20</a></li>
-            <li>Religion <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + d20</a>/li>
-            <li>Nature <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + d20</a></li>
-        </ul>
-        <h3>Charisma (<span data-populate-modifier="cha"></span>)</h3>
-        <ul>
-            <li>Deception <script>document.write(getAbilityModifier('cha') + 2)</script></span>
-            </li>
-            <li>Intimidation <span data-populate-modifier="cha"></span></li>
-            <li>Performance <span data-populate-modifier="cha"></span></li>
-            <li>Persuasion <script>document.write(getAbilityModifier('cha') + 4)</script></span>
-            </li>
-        </ul>
-    </section>
+        <section>
+            <h2>Skills</h2>
+            <h3>Strength (<span data-populate-modifier="str"></span>)</h3>
+            <ul>
+                <li>Athletics <a href="#" class="roll-expression">d20 <span data-populate-modifier="str"></span></a></li>
+            </ul>
+            <h3>Dexterity (<span data-populate-modifier="dex"></span>)</h3>
+            <ul>
+                <li>Acrobatics <a href="#" class="roll-expression">d20 + <span data-populate-modifier="dex"></span></a></li>
+                <li>Slight of Hand <a href="#" class="roll-expression"><span data-populate-modifier="dex"></span> + d20</a></li>
+                <li>Stealth <a href="#" class="roll-expression"><span data-populate-modifier="dex"></span> + d20</a></li>
+            </ul>
+            <h3>Wisdom (<span data-populate-modifier="wis"></span>)</h3>
+            <ul>
+                <li>Animal Handling <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + d20</a></li>
+                <li>Insight <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + 4 + d20</a></li>
+                <li>Medicine <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + d20</a></li>
+                <li>Perception <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + 2 + d20</a></li>
+                <li>Survival <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + d20</a></li>
+            </ul>
+            <h3>Intelligence (<span data-populate-modifier="int"></span>)</h3>
+            <ul>
+                <li>Arcana <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + d20</a></li>
+                <li>History <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + 2 + d20</a></li>
+                <li>Investigation <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + 2 + d20</a></li>
+                <li>Religion <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + d20</a></li>
+                <li>Nature <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + d20</a></li>
+            </ul>
+            <h3>Charisma (<span data-populate-modifier="cha"></span>)</h3>
+            <ul>
+                <li>Deception <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span> + 2</a></li>
+                <li>Intimidation <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span></a></li>
+                <li>Performance <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span></a></li>
+                <li>Persuasion <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span> + 4</a></li>
+                </li>
+            </ul>
+        </section>
 
-    <section>
-        <h2>Equipment</h2>
-        <dl>
-            <dt>Set of fine clothes</dt>
-            <dt>Signet ring</dt>
-            <dt>Scroll of pedigree</dt>
+        <section>
+            <h2>Equipment</h2>
+            <dl>
+                <dt>Set of fine clothes</dt>
+                <dt>Signet ring</dt>
+                <dt>Scroll of pedigree</dt>
 
-            <dt>Purse</dt>
-            <dd>Contains 25gp</dd>
+                <dt>Purse</dt>
+                <dd>Contains 25gp</dd>
 
-            <dt>leather armor</dt>
-            <dt>daggers (2)</dt>
-            <dt>thieves' tools</dt>
-            <dt>Rapier</dt>
-            <dd>
-                <div>Attack: <a href="#" class="roll-expression" data-eval-for-content="`1d20 + ${getAbilityModifier('dex')} + ${getStat('attack')}`"></a></div>
-                <div>Base damage: <a href="#" class="roll-expression" data-eval-for-content="`1d8 + ${getAbilityModifier('dex')}`"></a></div>
-                <div>Sneak attack damage: <a href="#" class="roll-expression"  data-eval-for-content="`1d8 + ${getAbilityModifier('dex')} + 1d6`"></a></div>
-            </dd>
-            <dt>shortbow + 20 arrows</dt>
-            <dt>explorer's pack</dt>
-        </dl>
-    </section>
+                <dt>leather armor</dt>
+                <dt>daggers (2)</dt>
+                <dt>thieves' tools</dt>
+                <dt>Rapier</dt>
+                <dd>
+                    <div>Attack:
+                        <a href="#" class="roll-expression" data-eval-for-content="`d20 + ${getAbilityModifier('dex')} + ${getStat('attack')}`"></a>
+                    </div>
+                    <div>Base damage:
+                        <a href="#" class="roll-expression" data-eval-for-content="`1d8 + ${getAbilityModifier('dex')}`"></a>
+                    </div>
+                    <div>Sneak attack damage:
+                        <a href="#" class="roll-expression" data-eval-for-content="`1d8 + ${getAbilityModifier('dex')} + 2d6`"></a>
+                    </div>
+                </dd>
+                <dt>shortbow + 20 arrows</dt>
+                <dt>explorer's pack</dt>
+            </dl>
+        </section>
 
-    <section>
-        <h2>Languages</h2>
+        <section>
+            <h2>Spellcasting</h2>
+            <div>Spell save DC: <a href="#" class="roll-expression">8 + <span data-eval-for-content="getStat('attack')"></span> + <span data-populate-modifier="int"></span></a></div>
+            <div>Spell attack: <a href="#" class="roll-expression">d20 + <span data-eval-for-content="getStat('attack')"></span> + <span data-populate-modifier="int"></span></a></div>
+            <div>
+                <h3>Cantrips</h3>
+                <dl>
+                    <dt>Mage Hand</dt>
+                    <dd>
+                        <p>Starting at 3rd level, when you cast mage hand, you can make the spectral hand invisible, and you can perform the following additional tasks with it:</p>
+                        <ul>
+                            <li>You can stow one object the hand is holding in a container worn or carried by another creature.</li>
+                            <li>You can retrieve an object in a container worn or carried by another creature.</li>
+                            <li>You can use thieves’ tools to pick locks and disarm traps at range.</li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+        </section>
 
-        <ul>
-            <li>Common</li>
-            <li>Gnomish</li>
-            <li>Elvish</li>
-        </ul>
-    </section> 
+        <section>
+            <h2>Languages</h2>
 
-    <section>
-        <h2>Background (Noble)</h2>
-        <p>
-            Keero, of house Cannith, is the oldest of two sons of Cranmine. His family has owned several factories in the area that are responsible for making everything from household goods to even some parts used in the lightning rail. He was destined for a life of relative ease amond the upper middle class of the area and could easily spend the rest of his days attending local socity events and managing the family business. 
-        </p>
-        <p>
-            This vision of the future that his parents so well nurtured bored Keero and he instead wanted adventure. In his swardsmanship
-            and archary training, which he was expected to be proficient in even though no one in his family can remember
-            when they last to fight or hunt, he dreamed of fighting Kobolds and defending a tower from an onslaught of goblins.
-        </p>
-        <p>
-            When he learned that "Martin's Magnificent Merchants" was in need of recruits he found his chance. He told his friends and
-            parents he was going on an adventure with the group to some ruins. "You'll come to your senses", his parents
-            exclaimed but let him go nonetheless.
-        </p>
-    </section>
+            <ul>
+                <li>Common</li>
+                <li>Gnomish</li>
+                <li>Elvish</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Background (Noble)</h2>
+            <p>
+                Keero, of house Cannith, is the oldest of two sons of Cranmine. His family has owned several factories in the area that are
+                responsible for making everything from household goods to even some parts used in the lightning rail. He
+                was destined for a life of relative ease amond the upper middle class of the area and could easily spend
+                the rest of his days attending local socity events and managing the family business.
+            </p>
+            <p>
+                This vision of the future that his parents so well nurtured bored Keero and he instead wanted adventure. In his swardsmanship
+                and archary training, which he was expected to be proficient in even though no one in his family can remember
+                when they last to fight or hunt, he dreamed of fighting Kobolds and defending a tower from an onslaught of
+                goblins.
+            </p>
+            <p>
+                When he learned that "Martin's Magnificent Merchants" was in need of recruits he found his chance. He told his friends and
+                parents he was going on an adventure with the group to some ruins. "You'll come to your senses", his parents
+                exclaimed but let him go nonetheless.
+            </p>
+        </section>
+    </main>
 </body>
 
 </html>
