@@ -6,6 +6,21 @@
 
     <script src="bundle.js"></script>
     <script src="index.js"></script>
+    <style>
+        main {
+            /*
+            display: flex;
+            flex-wrap: wrap;
+            */
+        }
+        section {
+            /*
+            border: solid thin black;
+            flex-grow: 1;
+            flex-shrink; 1;
+            */
+        }
+    </style>
 </head>
 
 <body>
@@ -14,14 +29,15 @@
     </header>
 
     <main>
-        <div>Level 1 Rogue</div>
-        <div>Initiative: <span data-populate-modifier="dex"></span></div>
-        <div>Total HP: <span data-eval-for-content="8 + getAbilityModifier('con') + (3 * (5 + getAbilityModifier('con')))"></span></div>
-        <div>Hit Dice: 1d8</div>
-        <div>Armor Class: <span data-eval-for-content="10 + getStat('dex')"></span></div>
-        <div>Speed: 30</div>
-        <div>Proficiency: <span data-base-stat="prof">2</span></div>
-
+        <section>
+            <div>Level 1 Rogue</div>
+            <div>Initiative: <span data-populate-modifier="dex"></span></div>
+            <div>Total HP: <span data-eval-for-content="8 + getAbilityModifier('con') + (3 * (5 + getAbilityModifier('con')))"></span></div>
+            <div>Hit Dice: 1d8</div>
+            <div>Armor Class: <span data-eval-for-content="10 + getAbilityModifier('dex')"></span></div>
+            <div>Speed: 30</div>
+            <div>Proficiency: <span data-base-stat="prof">2</span></div>
+        </section>
         <section>
             <h2>Stats</h2>
             <ul>
@@ -79,7 +95,7 @@
                 <dt>Scroll of pedigree</dt>
 
                 <dt>Purse</dt>
-                <dd>Contains 25gp</dd>
+                <dd>Contains 125gp</dd>
 
                 <dt>leather armor</dt>
                 <dt>daggers (2)</dt>
@@ -97,7 +113,11 @@
                     </div>
                 </dd>
                 <dt>shortbow + 20 arrows</dt>
+                <dt>Spell component pouch</dt>
                 <dt>explorer's pack</dt>
+                <dt>Ring</dt>
+                <dd>This ring was a gift from my father. He told me that it helped him when dealing with some of the more powerful
+                    socialites. Now that I have a greater understanding of the arcane I know that it's a ring of <a href="">mind shielding</a>.</dd>
             </dl>
         </section>
 
@@ -107,59 +127,60 @@
             <div>Spell prof: <a href="#" class="roll-expression">d20 + <span data-eval-for-content="getStat('prof')"></span> + <span data-populate-modifier="int"></span></a></div>
             <div>
                 <h3>Cantrips</h3>
-                <dl>
-                    <dt>Mage Hand (Conjuration)</dt>
-                    <dd>
-                        <div>Casting Time: 1 action</div>
-                        <div>Range: 30 feet</div>
-                        <div>Components: V, S</div>
-                        <div>Duration: 1 minute</div>
-                        <p>
-                            A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration or until you dismiss
-                            it as an action. The hand vanishes if it is ever m ore than 30 feet away from you or if you cast
-                            this spell again.</p>
-                        <p>
-                            You can use your action to control the hand. You can use the hand to manipulate an object, open an unlocked door or container,
-                            stow or retrieve an item from an open container, or pour the contents out of a vial. You can
-                            move the hand up to 30 feet each time you use it.
-                            <p>
-                                <p>
-                                    The hand can’t attack, activate magic items, or carry more than 10 pounds.</p>
-
-                                <h4>Mage Hand Legerdemain</h4>
-                                <p>Starting at 3rd level, when you cast mage hand, you can make the spectral hand invisible,
-                                    and you can perform the following additional tasks with it:</p>
-                                <ul>
-                                    <li>You can stow one object the hand is holding in a container worn or carried by another
-                                        creature.
-                                    </li>
-                                    <li>You can retrieve an object in a container worn or carried by another creature.</li>
-                                    <li>You can use thieves’ tools to pick locks and disarm traps at range.</li>
-                                </ul>
-                                <p>You can perform one of these tasks without being noticed by a creature if you succeed on
-                                    a Dexterity (Sleight of Hand) check contested by the creature’s Wisdom (Perception) check.
-                                    In addition, you can use the bonus action granted by your Cunning Action to control the
-                                    hand.
-                                    <p>
-                    </dd>
-                    <dt></dt>
-                    <dt></dt>
-                </dl>
+                <ul>
+                    <li><a href="http://ephe.github.io/grimoire/spells/mage-hand">Mage Hand (Conjuration)</a>
+                        <h4>Mage Hand Legerdemain</h4>
+                        <p>Starting at 3rd level, when you cast mage hand, you can make the spectral hand invisible, and you
+                            can perform the following additional tasks with it:</p>
+                        <ul>
+                            <li>You can stow one object the hand is holding in a container worn or carried by another creature.
+                            </li>
+                            <li>You can retrieve an object in a container worn or carried by another creature.</li>
+                            <li>You can use thieves’ tools to pick locks and disarm traps at range.</li>
+                        </ul>
+                        <p>You can perform one of these tasks without being noticed by a creature if you succeed on a Dexterity
+                            (Sleight of Hand) check contested by the creature’s Wisdom (Perception) check. In addition, you
+                            can use the bonus action granted by your Cunning Action to control the hand.
+                        </p>
+                    </li>
+                    <li><a href="http://ephe.github.io/grimoire/spells/message">Whisper</a></li>
+                    <li><a href="http://ephe.github.io/grimoire/spells/lightning-lure">Lightning Lure</a></li>
+                </ul>
             </div>
             <div>
                 <h3>1st Level (3 slots)</h3>
-                <dl>
-                    <dt>Disguise Self ()</dt>
-                    <dt></dt>
-                    <dt></dt>
-                    <dt></dt>
-                </dl>
+                <ul>
+                    <li><a href="http://ephe.github.io/grimoire/spells/disguise-self">Disguise Self</a></li>
+                    <li><a href="http://ephe.github.io/grimoire/spells/sleep">Sleep</a></li>
+                    <li><a href="http://ephe.github.io/grimoire/spells/charm-person">Charm Person</a></li>
+                    <li><a href="http://ephe.github.io/grimoire/spells/shield">Shield</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Special</h2>
+
+            <div>
+                <h3>Sentinel</h3>
+                <p>You have mastered techniques to take advantage of every drop in any enemy’s guard, gaining the following
+                    benefits:
+                </p>
+                <ul>
+                    <li>When you hit a creature with an opportunity attack, the creature’s speed becomes 0 for the rest of the
+                        turn.
+                    </li>
+                    <li>Creatures within 5 feet of you provoke opportunity attacks from you even if they take the Disengage action
+                        before leaving your reach.</li>
+                    <li>When a creature within 5 feet of you makes an attack against a target other than you (and that target
+                        doesn’t have this feat), you can use your reaction to make a melee weapon attack against the attacking
+                        creature.
+                    </li>
             </div>
         </section>
 
         <section>
             <h2>Languages</h2>
-
             <ul>
                 <li>Common</li>
                 <li>Gnomish</li>
