@@ -7,19 +7,17 @@
     <script src="bundle.js"></script>
     <script src="index.js"></script>
     <style>
+        /*
         main {
-            /*
             display: flex;
             flex-wrap: wrap;
-            */
         }
+        
         section {
-            /*
             border: solid thin black;
-            flex-grow: 1;
-            flex-shrink; 1;
-            */
+            width: 33%;
         }
+        */
     </style>
 </head>
 
@@ -29,16 +27,16 @@
     </header>
 
     <main>
-        <section>
+        <section id="general">
             <div>Level 1 Rogue</div>
             <div>Initiative: <span data-populate-modifier="dex"></span></div>
             <div>Total HP: <span data-eval-for-content="8 + getAbilityModifier('con') + (3 * (5 + getAbilityModifier('con')))"></span></div>
             <div>Hit Dice: 1d8</div>
-            <div>Armor Class: <span data-eval-for-content="10 + getAbilityModifier('dex')"></span></div>
+            <div>Armor Class: <span data-eval-for-content="11 + getAbilityModifier('dex')"></span></div>
             <div>Speed: 30</div>
             <div>Proficiency: <span data-base-stat="prof">2</span></div>
         </section>
-        <section>
+        <section id="stats">
             <h2>Stats</h2>
             <ul>
                 <li>Str <span data-base-stat="str">9</span></li>
@@ -50,7 +48,7 @@
             </ul>
         </section>
 
-        <section>
+        <section id="skills">
             <h2>Skills</h2>
             <h3>Strength (<span data-populate-modifier="str"></span>)</h3>
             <ul>
@@ -72,7 +70,7 @@
             </ul>
             <h3>Intelligence (<span data-populate-modifier="int"></span>)</h3>
             <ul>
-                <li>Arcana <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + <span data-eval-for-content="getStat('prof')"></span> + d20</a></li>
+                <li>Arcana <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + d20</a></li>
                 <li>History <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + d20</a></li>
                 <li>Investigation <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + <span data-eval-for-content="getStat('prof')"></span> + d20</a></li>
                 <li>Religion <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + d20</a></li>
@@ -80,14 +78,14 @@
             </ul>
             <h3>Charisma (<span data-populate-modifier="cha"></span>)</h3>
             <ul>
-                <li>Deception <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span> + <span data-eval-for-content="getStat('prof')"></span></a></li>
+                <li>Deception <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span></a></li>
                 <li>Intimidation <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span></a></li>
                 <li>Performance <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span></a></li>
                 <li>Persuasion <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span> + <span data-eval-for-content="getStat('prof') * 2"></span></a></li>
             </ul>
         </section>
 
-        <section>
+        <section id="equipment">
             <h2>Equipment</h2>
             <dl>
                 <dt>Set of fine clothes</dt>
@@ -97,7 +95,7 @@
                 <dt>Purse</dt>
                 <dd>Contains 125gp</dd>
 
-                <dt>leather armor</dt>
+                <dt>Leather armor</dt>
                 <dt>daggers (2)</dt>
                 <dt>thieves' tools</dt>
                 <dt>Rapiers (2)</dt>
@@ -124,7 +122,7 @@
             </dl>
         </section>
 
-        <section>
+        <section id="spellcasting">
             <h2>Spellcasting</h2>
             <div>Spell save DC: <a href="#" class="roll-expression">8 + <span data-eval-for-content="getStat('prof')"></span> + <span data-populate-modifier="int"></span></a></div>
             <div>Spell prof: <a href="#" class="roll-expression">d20 + <span data-eval-for-content="getStat('prof')"></span> + <span data-populate-modifier="int"></span></a></div>
@@ -161,7 +159,7 @@
             </div>
         </section>
 
-        <section>
+        <section id="Special">
             <h2>Special</h2>
 
             <div>
@@ -180,9 +178,16 @@
                         creature.
                     </li>
             </div>
+
+            <div>
+                <h3>Cunning Action</h3>
+                <p>Starting at 2nd level, your quick thinking and agility allow you to move and act quickly. You can take a
+                    bonus action on each of your turns in combat. This action can be used only to take the Dash, Disengage,
+                    or Hide action.</p>
+            </div>
         </section>
 
-        <section>
+        <section id="languages">
             <h2>Languages</h2>
             <ul>
                 <li>Common</li>
@@ -191,7 +196,7 @@
             </ul>
         </section>
 
-        <section>
+        <section id="background">
             <h2>Background (Noble)</h2>
             <p>
                 Keero, of house Cannith, is the oldest of two sons of Cranmine. His family has owned several factories in the area that are
