@@ -18,9 +18,9 @@
         <div>Initiative: <span data-populate-modifier="dex"></span></div>
         <div>Total HP: <span data-eval-for-content="8 + getAbilityModifier('con') + (3 * (5 + getAbilityModifier('con')))"></span></div>
         <div>Hit Dice: 1d8</div>
-        <div>Armor Class: 14</div>
+        <div>Armor Class: <span data-eval-for-content="10 + getStat('dex')"></span></div>
         <div>Speed: 30</div>
-        <div>Attack Proficiency: <span data-base-stat="attack">2</span></div>
+        <div>Proficiency: <span data-base-stat="prof">2</span></div>
 
         <section>
             <h2>Stats</h2>
@@ -49,26 +49,25 @@
             <h3>Wisdom (<span data-populate-modifier="wis"></span>)</h3>
             <ul>
                 <li>Animal Handling <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + d20</a></li>
-                <li>Insight <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + 4 + d20</a></li>
+                <li>Insight <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + <span data-eval-for-content="getStat('prof')"></span> + d20</a></li>
                 <li>Medicine <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + d20</a></li>
-                <li>Perception <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + 2 + d20</a></li>
+                <li>Perception <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + <span data-eval-for-content="getStat('prof') * 2"></span> + d20</a></li>
                 <li>Survival <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + d20</a></li>
             </ul>
             <h3>Intelligence (<span data-populate-modifier="int"></span>)</h3>
             <ul>
-                <li>Arcana <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + d20</a></li>
-                <li>History <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + 2 + d20</a></li>
-                <li>Investigation <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + 2 + d20</a></li>
+                <li>Arcana <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + <span data-eval-for-content="getStat('prof')"></span> + d20</a></li>
+                <li>History <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + d20</a></li>
+                <li>Investigation <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + <span data-eval-for-content="getStat('prof')"></span> + d20</a></li>
                 <li>Religion <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + d20</a></li>
                 <li>Nature <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + d20</a></li>
             </ul>
             <h3>Charisma (<span data-populate-modifier="cha"></span>)</h3>
             <ul>
-                <li>Deception <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span> + 2</a></li>
+                <li>Deception <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span> + <span data-eval-for-content="getStat('prof')"></span></a></li>
                 <li>Intimidation <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span></a></li>
                 <li>Performance <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span></a></li>
-                <li>Persuasion <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span> + 4</a></li>
-                </li>
+                <li>Persuasion <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span> + <span data-eval-for-content="getStat('prof') * 2"></span></a></li>
             </ul>
         </section>
 
@@ -88,7 +87,7 @@
                 <dt>Rapier</dt>
                 <dd>
                     <div>Attack:
-                        <a href="#" class="roll-expression" data-eval-for-content="`d20 + ${getAbilityModifier('dex')} + ${getStat('attack')}`"></a>
+                        <a href="#" class="roll-expression" data-eval-for-content="`d20 + ${getAbilityModifier('dex')} + ${getStat('prof')}`"></a>
                     </div>
                     <div>Base damage:
                         <a href="#" class="roll-expression" data-eval-for-content="`1d8 + ${getAbilityModifier('dex')}`"></a>
@@ -104,8 +103,8 @@
 
         <section>
             <h2>Spellcasting</h2>
-            <div>Spell save DC: <a href="#" class="roll-expression">8 + <span data-eval-for-content="getStat('attack')"></span> + <span data-populate-modifier="int"></span></a></div>
-            <div>Spell attack: <a href="#" class="roll-expression">d20 + <span data-eval-for-content="getStat('attack')"></span> + <span data-populate-modifier="int"></span></a></div>
+            <div>Spell save DC: <a href="#" class="roll-expression">8 + <span data-eval-for-content="getStat('prof')"></span> + <span data-populate-modifier="int"></span></a></div>
+            <div>Spell prof: <a href="#" class="roll-expression">d20 + <span data-eval-for-content="getStat('prof')"></span> + <span data-populate-modifier="int"></span></a></div>
             <div>
                 <h3>Cantrips</h3>
                 <dl>
@@ -132,7 +131,8 @@
                                     and you can perform the following additional tasks with it:</p>
                                 <ul>
                                     <li>You can stow one object the hand is holding in a container worn or carried by another
-                                        creature.</li>
+                                        creature.
+                                    </li>
                                     <li>You can retrieve an object in a container worn or carried by another creature.</li>
                                     <li>You can use thieves’ tools to pick locks and disarm traps at range.</li>
                                 </ul>
@@ -142,6 +142,17 @@
                                     hand.
                                     <p>
                     </dd>
+                    <dt></dt>
+                    <dt></dt>
+                </dl>
+            </div>
+            <div>
+                <h3>1st Level (3 slots)</h3>
+                <dl>
+                    <dt>Disguise Self ()</dt>
+                    <dt></dt>
+                    <dt></dt>
+                    <dt></dt>
                 </dl>
             </div>
         </section>
