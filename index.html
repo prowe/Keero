@@ -4,10 +4,10 @@
 
 <head>
 
-    <script src="bundle.js"></script>
-    <script src="index.js"></script>
-    <style>
-        /*
+	<script src="bundle.js"></script>
+
+	<style>
+		/*
         main {
             display: flex;
             flex-wrap: wrap;
@@ -18,231 +18,271 @@
             width: 33%;
         }
         */
-    </style>
+		
+		#ledgerTable thead {
+			border-bottom: solid black thin;
+		}
+	</style>
 </head>
 
 <body>
-    <header>
-        <h1>Keero</h1>
-    </header>
+	<header>
+		<h1>Keero</h1>
+	</header>
 
-    <main>
-        <section id="general">
-            <div>Level 1 Rogue</div>
-            <div>Initiative: <span data-populate-modifier="dex"></span></div>
-            <div>Total HP: <span data-eval-for-content="8 + getAbilityModifier('con') + (3 * (5 + getAbilityModifier('con')))"></span></div>
-            <div>Hit Dice: 1d8</div>
-            <div>Armor Class: <span data-eval-for-content="11 + getAbilityModifier('dex')"></span></div>
-            <div>Speed: 30</div>
-            <div>Proficiency: <span data-base-stat="prof">2</span></div>
-        </section>
-        <section id="stats">
-            <h2>Stats</h2>
-            <ul>
-                <li>Str <span data-base-stat="str">9</span></li>
-                <li>Dex <span data-base-stat="dex">16</span></li>
-                <li>Con <span data-base-stat="con">14</span></li>
-                <li>Wis <span data-base-stat="wis">13</span></li>
-                <li>Int <span data-base-stat="int">15</span></li>
-                <li>Cha <span data-base-stat="cha">11</span></li>
-            </ul>
-        </section>
+	<main id="characterSheet">
+		<section id="general">
+			<div>Level 1 Rogue</div>
+			<div>Initiative: <span data-populate-modifier="dex"></span></div>
+			<div>Total HP: <span data-eval-for-content="8 + getAbilityModifier('con') + (3 * (5 + getAbilityModifier('con')))"></span></div>
+			<div>Hit Dice: 1d8</div>
+			<div>Armor Class: <span data-eval-for-content="11 + getAbilityModifier('dex')"></span></div>
+			<div>Speed: 30</div>
+			<div>Proficiency: <span data-base-stat="prof">2</span></div>
+		</section>
+		<section id="stats">
+			<h2>Stats</h2>
+			<ul>
+				<li>Str <span data-base-stat="str">9</span></li>
+				<li>Dex <span data-base-stat="dex">16</span></li>
+				<li>Con <span data-base-stat="con">14</span></li>
+				<li>Wis <span data-base-stat="wis">13</span></li>
+				<li>Int <span data-base-stat="int">15</span></li>
+				<li>Cha <span data-base-stat="cha">11</span></li>
+			</ul>
+		</section>
 
-        <section id="skills">
-            <h2>Skills</h2>
-            <h3>Strength (<span data-populate-modifier="str"></span>)</h3>
-            <ul>
-                <li>Athletics <a href="#" class="roll-expression">d20 <span data-populate-modifier="str"></span></a></li>
-            </ul>
-            <h3>Dexterity (<span data-populate-modifier="dex"></span>)</h3>
-            <ul>
-                <li>Acrobatics <a href="#" class="roll-expression">d20 + <span data-populate-modifier="dex"></span></a></li>
-                <li>Slight of Hand <a href="#" class="roll-expression"><span data-populate-modifier="dex"></span> + d20</a></li>
-                <li>Stealth <a href="#" class="roll-expression"><span data-populate-modifier="dex"></span> + d20</a></li>
-            </ul>
-            <h3>Wisdom (<span data-populate-modifier="wis"></span>)</h3>
-            <ul>
-                <li>Animal Handling <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + d20</a></li>
-                <li>Insight <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + <span data-eval-for-content="getStat('prof')"></span> + d20</a></li>
-                <li>Medicine <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + d20</a></li>
-                <li>Perception <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + <span data-eval-for-content="getStat('prof') * 2"></span> + d20</a></li>
-                <li>Survival <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + d20</a></li>
-            </ul>
-            <h3>Intelligence (<span data-populate-modifier="int"></span>)</h3>
-            <ul>
-                <li>Arcana <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + d20</a></li>
-                <li>History <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + d20</a></li>
-                <li>Investigation <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + <span data-eval-for-content="getStat('prof')"></span> + d20</a></li>
-                <li>Religion <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + d20</a></li>
-                <li>Nature <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + d20</a></li>
-            </ul>
-            <h3>Charisma (<span data-populate-modifier="cha"></span>)</h3>
-            <ul>
-                <li>Deception <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span></a></li>
-                <li>Intimidation <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span></a></li>
-                <li>Performance <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span></a></li>
-                <li>Persuasion <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span> + <span data-eval-for-content="getStat('prof') * 2"></span></a></li>
-            </ul>
-        </section>
+		<section id="skills">
+			<h2>Skills</h2>
+			<h3>Strength (<span data-populate-modifier="str"></span>)</h3>
+			<ul>
+				<li>Athletics <a href="#" class="roll-expression">d20 <span data-populate-modifier="str"></span></a></li>
+			</ul>
+			<h3>Dexterity (<span data-populate-modifier="dex"></span>)</h3>
+			<ul>
+				<li>Acrobatics <a href="#" class="roll-expression">d20 + <span data-populate-modifier="dex"></span></a></li>
+				<li>Slight of Hand <a href="#" class="roll-expression"><span data-populate-modifier="dex"></span> + d20</a></li>
+				<li>Stealth <a href="#" class="roll-expression"><span data-populate-modifier="dex"></span> + d20</a></li>
+			</ul>
+			<h3>Wisdom (<span data-populate-modifier="wis"></span>)</h3>
+			<ul>
+				<li>Animal Handling <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + d20</a></li>
+				<li>Insight <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + <span data-eval-for-content="getStat('prof')"></span> + d20</a></li>
+				<li>Medicine <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + d20</a></li>
+				<li>Perception <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + <span data-eval-for-content="getStat('prof') * 2"></span> + d20</a></li>
+				<li>Survival <a href="#" class="roll-expression"><span data-populate-modifier="wis"></span> + d20</a></li>
+			</ul>
+			<h3>Intelligence (<span data-populate-modifier="int"></span>)</h3>
+			<ul>
+				<li>Arcana <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + d20</a></li>
+				<li>History <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + d20</a></li>
+				<li>Investigation <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + <span data-eval-for-content="getStat('prof')"></span> + d20</a></li>
+				<li>Religion <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + d20</a></li>
+				<li>Nature <a href="#" class="roll-expression"><span data-populate-modifier="int"></span> + d20</a></li>
+			</ul>
+			<h3>Charisma (<span data-populate-modifier="cha"></span>)</h3>
+			<ul>
+				<li>Deception <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span></a></li>
+				<li>Intimidation <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span></a></li>
+				<li>Performance <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span></a></li>
+				<li>Persuasion <a href="#" class="roll-expression">d20 + <span data-populate-modifier="cha"></span> + <span data-eval-for-content="getStat('prof') * 2"></span></a></li>
+			</ul>
+		</section>
 
-        <section id="equipment">
-            <h2>Equipment</h2>
-            <dl>
-                <dt>Set of fine clothes</dt>
-                <dt>Signet ring</dt>
-                <dt>Scroll of pedigree</dt>
+		<section id="equipment">
+			<h2>Equipment</h2>
+			<dl>
+				<dt>Set of fine clothes</dt>
+				<dt>Signet ring</dt>
+				<dt>Scroll of pedigree</dt>
 
-                <dt>Purse</dt>
-                <dd>Contains 125gp</dd>
+				<dt>Purse</dt>
+				<dd>Contains {{financialSummary.pp}}pp {{financialSummary.gp}}gp {{financialSummary.sp}}sp</dd>
 
-                <dt>Leather armor</dt>
-                <dt>daggers (2)</dt>
-                <dt>thieves' tools</dt>
-                <dt>Everburning Torch</dt>
-                <dt>Rapiers (2)</dt>
-                <dd>
-                    <div>Attack:
-                        <a href="#" class="roll-expression" data-eval-for-content="`d20 + ${getAbilityModifier('dex')} + ${getStat('prof')}`"></a>
-                    </div>
-                    <div>Base damage:
-                        <a href="#" class="roll-expression" data-eval-for-content="`1d8 + ${getAbilityModifier('dex')}`"></a>
-                    </div>
-                    <div>Sneak attack damage:
-                        <a href="#" class="roll-expression" data-eval-for-content="`1d8 + ${getAbilityModifier('dex')} + 2d6`"></a>
-                    </div>
-                    <div>Off hand damage:
-                        <a href="#" class="roll-expression">1d8</a>
-                    </div>
-                </dd>
-                <dt>shortbow + 20 arrows</dt>
-                <dt>Spell component pouch</dt>
-                <dt>explorer's pack</dt>
-                <dt>Ring</dt>
-                <dd>This ring was a gift from my father. He told me that it helped him when dealing with some of the more powerful
-                    socialites. Now that I have a greater understanding of the arcane I know that it's a ring of <a href="">mind shielding</a>.</dd>
-                <dt>"Map" of the Mournland</dt>
-                <dd>Old map of Cyre that I've written in various features of the Mournland that I've learned about</dd>
-            </dl>
-        </section>
+				<dt>Leather armor</dt>
+				<dt>daggers (2)</dt>
+				<dt>thieves' tools</dt>
+				<dt>Everburning Torch</dt>
+				<dt>Rapiers (2)</dt>
+				<dd>
+					<div>Attack:
+						<a href="#" class="roll-expression" data-eval-for-content="`d20 + ${getAbilityModifier('dex')} + ${getStat('prof')}`"></a>
+					</div>
+					<div>Base damage:
+						<a href="#" class="roll-expression" data-eval-for-content="`1d8 + ${getAbilityModifier('dex')}`"></a>
+					</div>
+					<div>Sneak attack damage:
+						<a href="#" class="roll-expression" data-eval-for-content="`1d8 + ${getAbilityModifier('dex')} + 2d6`"></a>
+					</div>
+					<div>Off hand damage:
+						<a href="#" class="roll-expression">1d8</a>
+					</div>
+				</dd>
+				<dt>shortbow + 20 arrows</dt>
+				<dt>Spell component pouch</dt>
+				<dt>explorer's pack</dt>
+				<dt>Ring</dt>
+				<dd>This ring was a gift from my father. He told me that it helped him when dealing with some of the more powerful socialites.
+					Now that I have a greater understanding of the arcane I know that it's a ring of <a href="">mind shielding</a>.</dd>
 
-        <section id="spellcasting">
-            <h2>Spellcasting</h2>
-            <div>Spell save DC: <a href="#" class="roll-expression">8 + <span data-eval-for-content="getStat('prof')"></span> + <span data-populate-modifier="int"></span></a></div>
-            <div>Spell prof: <a href="#" class="roll-expression">d20 + <span data-eval-for-content="getStat('prof')"></span> + <span data-populate-modifier="int"></span></a></div>
-            <div>
-                <h3>Cantrips</h3>
-                <ul>
-                    <li><a href="http://engl393-dnd5th.wikia.com/wiki/Mage_Hand">Mage Hand (Conjuration)</a>
-                        <h4>Mage Hand Legerdemain</h4>
-                        <p>Starting at 3rd level, when you cast mage hand, you can make the spectral hand invisible, and you
-                            can perform the following additional tasks with it:</p>
-                        <ul>
-                            <li>You can stow one object the hand is holding in a container worn or carried by another creature.
-                            </li>
-                            <li>You can retrieve an object in a container worn or carried by another creature.</li>
-                            <li>You can use thieves’ tools to pick locks and disarm traps at range.</li>
-                        </ul>
-                        <p>You can perform one of these tasks without being noticed by a creature if you succeed on a Dexterity
-                            (Sleight of Hand) check contested by the creature’s Wisdom (Perception) check. In addition, you
-                            can use the bonus action granted by your Cunning Action to control the hand.
-                        </p>
-                    </li>
-                    <li><a href="http://engl393-dnd5th.wikia.com/wiki/Message">Message</a></li>
-                    <li><a href="http://engl393-dnd5th.wikia.com/wiki/Lightning_Lure">Lightning Lure</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>1st Level (3 slots)</h3>
-                <ul>
-                    <li><a href="http://engl393-dnd5th.wikia.com/wiki/Disguise_Self">Disguise Self</a></li>
-                    <li><a href="http://engl393-dnd5th.wikia.com/wiki/Sleep">Sleep</a></li>
-                    <li><a href="http://engl393-dnd5th.wikia.com/wiki/Charm_Person">Charm Person</a></li>
-                    <li><a href="http://engl393-dnd5th.wikia.com/wiki/Shield">Shield</a></li>
-                </ul>
-            </div>
-        </section>
+				<dt>"Map" of the Mournland</dt>
+				<dd>Old map of Cyre that I've written in various features of the Mournland that I've learned about</dd>
 
-        <section id="Special">
-            <h2>Special</h2>
+                <dt>MMM Medalion</dt>
+			</dl>
+		</section>
 
-            <div>
-                <h3>Sentinel</h3>
-                <p>You have mastered techniques to take advantage of every drop in any enemy’s guard, gaining the following
-                    benefits:
-                </p>
-                <ul>
-                    <li>When you hit a creature with an opportunity attack, the creature’s speed becomes 0 for the rest of the
-                        turn.
-                    </li>
-                    <li>Creatures within 5 feet of you provoke opportunity attacks from you even if they take the Disengage action
-                        before leaving your reach.</li>
-                    <li>When a creature within 5 feet of you makes an attack against a target other than you (and that target
-                        doesn’t have this feat), you can use your reaction to make a melee weapon attack against the attacking
-                        creature.
-                    </li>
-            </div>
+		<section id="spellcasting">
+			<h2>Spellcasting</h2>
+			<div>Spell save DC: <a href="#" class="roll-expression">8 + <span data-eval-for-content="getStat('prof')"></span> + <span data-populate-modifier="int"></span></a></div>
+			<div>Spell prof: <a href="#" class="roll-expression">d20 + <span data-eval-for-content="getStat('prof')"></span> + <span data-populate-modifier="int"></span></a></div>
+			<div>
+				<h3>Cantrips</h3>
+				<ul>
+					<li><a href="http://engl393-dnd5th.wikia.com/wiki/Mage_Hand">Mage Hand (Conjuration)</a>
+						<h4>Mage Hand Legerdemain</h4>
+						<p>Starting at 3rd level, when you cast mage hand, you can make the spectral hand invisible, and you can perform the following
+							additional tasks with it:</p>
+						<ul>
+							<li>You can stow one object the hand is holding in a container worn or carried by another creature.
+							</li>
+							<li>You can retrieve an object in a container worn or carried by another creature.</li>
+							<li>You can use thieves’ tools to pick locks and disarm traps at range.</li>
+						</ul>
+						<p>You can perform one of these tasks without being noticed by a creature if you succeed on a Dexterity (Sleight of Hand)
+							check contested by the creature’s Wisdom (Perception) check. In addition, you can use the bonus action granted by
+							your Cunning Action to control the hand.
+						</p>
+					</li>
+					<li><a href="http://engl393-dnd5th.wikia.com/wiki/Message">Message</a></li>
+					<li><a href="http://engl393-dnd5th.wikia.com/wiki/Lightning_Lure">Lightning Lure</a></li>
+				</ul>
+			</div>
+			<div>
+				<h3>1st Level (3 slots)</h3>
+				<ul>
+					<li><a href="http://engl393-dnd5th.wikia.com/wiki/Disguise_Self">Disguise Self</a></li>
+					<li><a href="http://engl393-dnd5th.wikia.com/wiki/Sleep">Sleep</a></li>
+					<li><a href="http://engl393-dnd5th.wikia.com/wiki/Charm_Person">Charm Person</a></li>
+					<li><a href="http://engl393-dnd5th.wikia.com/wiki/Shield">Shield</a></li>
+				</ul>
+			</div>
+		</section>
 
-            <div>
-                <h3>Cunning Action</h3>
-                <p>Starting at 2nd level, your quick thinking and agility allow you to move and act quickly. You can take a
-                    bonus action on each of your turns in combat. This action can be used only to take the Dash, Disengage,
-                    or Hide action.</p>
-            </div>
-                
-            <div>
-                <h3>Natural Explorer (The Mournland)</h3>
-                <p>When you make an Intelligence (Investigation, Nature) or Wisdom (Animal Handling, Perception, Survival) check while in the Mournland, your proficiency bonus is doubled if you are using one of those skill that you're proficient in. While traveling for an hour or more in the Mournland, you gain the following benefits:</p>
-                <ul>
-                    <li>Difficult terrain doesn't slow your group's travel.</li>
-                    <li>Your group can't become lost except by magical means.</li>
-                    <li>Even when you are engaged in another activity while traveling (such as foraging, navigating, or tracking), you remain alert to danger.</li>
-                    <li>If you are traveling alone, you can move stealthily at a normal pace.</li>
-                    <li>When you forage, you find twice as much food as you normally would.</li>
-                    <li>While tracking other creatures, you also learn their exact number, their sizes, and how long ago they passed through the area.</li>
-                </ul>
-                <p> See phb p91</p>
-            </div>
-        </section>
+		<section id="Special">
+			<h2>Special</h2>
 
-        <section id="languages">
-            <h2>Languages</h2>
-            <ul>
-                <li>Common</li>
-                <li>Gnomish</li>
-                <li>Elvish</li>
-            </ul>
-        </section>
-            
-        <section id="relationships">
-            <h2>Relationships &amp; Contacts</h2>
-            <dl>
-                <dt>Aralyn</dt>
-                <dd>Met in the mournland on an excersion to some ruins. Good source of info on what is going on there.</dd>
-                
-            </dl>
-        </section>
-            
-        <section id="background">
-            <h2>Background (Noble)</h2>
-            <p>
-                Keero, of house Cannith, is the oldest of two sons of Cranmine. His family has owned several factories in the area that are
-                responsible for making everything from household goods to even some parts used in the lightning rail. He
-                was destined for a life of relative ease amond the upper middle class of the area and could easily spend
-                the rest of his days attending local socity events and managing the family business.
-            </p>
-            <p>
-                This vision of the future that his parents so well nurtured bored Keero and he instead wanted adventure. In his swardsmanship
-                and archary training, which he was expected to be proficient in even though no one in his family can remember
-                when they last to fight or hunt, he dreamed of fighting Kobolds and defending a tower from an onslaught of
-                goblins.
-            </p>
-            <p>
-                When he learned that "Martin's Magnificent Merchants" was in need of recruits he found his chance. He told his friends and
-                parents he was going on an adventure with the group to some ruins. "You'll come to your senses", his parents
-                exclaimed but let him go nonetheless.
-            </p>
-        </section>
-    </main>
+			<div>
+				<h3>Sentinel</h3>
+				<p>You have mastered techniques to take advantage of every drop in any enemy’s guard, gaining the following benefits:
+				</p>
+				<ul>
+					<li>When you hit a creature with an opportunity attack, the creature’s speed becomes 0 for the rest of the turn.
+					</li>
+					<li>Creatures within 5 feet of you provoke opportunity attacks from you even if they take the Disengage action before leaving
+						your reach.</li>
+					<li>When a creature within 5 feet of you makes an attack against a target other than you (and that target doesn’t have this
+						feat), you can use your reaction to make a melee weapon attack against the attacking creature.
+					</li>
+			</div>
+
+			<div>
+				<h3>Cunning Action</h3>
+				<p>Starting at 2nd level, your quick thinking and agility allow you to move and act quickly. You can take a bonus action
+					on each of your turns in combat. This action can be used only to take the Dash, Disengage, or Hide action.</p>
+			</div>
+
+			<div>
+				<h3>Natural Explorer (The Mournland)</h3>
+				<p>When you make an Intelligence (Investigation, Nature) or Wisdom (Animal Handling, Perception, Survival) check while in
+					the Mournland, your proficiency bonus is doubled if you are using one of those skill that you're proficient in. While
+					traveling for an hour or more in the Mournland, you gain the following benefits:</p>
+				<ul>
+					<li>Difficult terrain doesn't slow your group's travel.</li>
+					<li>Your group can't become lost except by magical means.</li>
+					<li>Even when you are engaged in another activity while traveling (such as foraging, navigating, or tracking), you remain
+						alert to danger.</li>
+					<li>If you are traveling alone, you can move stealthily at a normal pace.</li>
+					<li>When you forage, you find twice as much food as you normally would.</li>
+					<li>While tracking other creatures, you also learn their exact number, their sizes, and how long ago they passed through
+						the area.</li>
+				</ul>
+				<p> See phb p91</p>
+			</div>
+		</section>
+
+		<section id="languages">
+			<h2>Languages</h2>
+			<ul>
+				<li>Common</li>
+				<li>Gnomish</li>
+				<li>Elvish</li>
+			</ul>
+		</section>
+
+		<section id="relationships">
+			<h2>Relationships &amp; Contacts</h2>
+			<dl>
+				<dt>Aralyn</dt>
+				<dd>Met in the mournland on an excersion to some ruins. Good source of info on what is going on there.</dd>
+
+			</dl>
+		</section>
+
+		<section id="background">
+			<h2>Background (Noble)</h2>
+			<p>
+				Keero, of house Cannith, is the oldest of two sons of Cranmine. His family has owned several factories in the area that are
+				responsible for making everything from household goods to even some parts used in the lightning rail. He was destined
+				for a life of relative ease amond the upper middle class of the area and could easily spend the rest of his days attending
+				local socity events and managing the family business.
+			</p>
+			<p>
+				This vision of the future that his parents so well nurtured bored Keero and he instead wanted adventure. In his swardsmanship
+				and archary training, which he was expected to be proficient in even though no one in his family can remember when they
+				last to fight or hunt, he dreamed of fighting Kobolds and defending a tower from an onslaught of goblins.
+			</p>
+			<p>
+				When he learned that "Martin's Magnificent Merchants" was in need of recruits he found his chance. He told his friends and
+				parents he was going on an adventure with the group to some ruins. "You'll come to your senses", his parents exclaimed
+				but let him go nonetheless.
+			</p>
+		</section>
+
+		<section>
+			<h2>Financial Ledger</h2>
+			<table id="ledgerTable">
+				<thead>
+					<tr>
+						<th>Description</th>
+						<th>Plat</th>
+						<th>Gold</th>
+						<th>Silver</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<td>Balance</td>
+						<td>{{financialSummary.pp}}</td>
+						<td>{{financialSummary.gp}}</td>
+						<td>{{financialSummary.sp}}</td>
+					</tr>
+				</tfoot>
+				<tbody>
+					<tr v-for="e in financialLedger">
+						<td>{{e.description}}</td>
+						<td>{{e.pp}}</td>
+						<td>{{e.gp}}</td>
+						<td>{{e.sp}}</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</section>
+	</main>
+
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="index.js"></script>
 </body>
 
 </html>
